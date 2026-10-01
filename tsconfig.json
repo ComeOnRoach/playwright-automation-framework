@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",             // modern JS
+    "module": "ESNext",             // modern imports (pairs with bundler)
+    "moduleResolution": "bundler",  // modern way TypeScript finds files
+    "strict": true,                 // better error checking
+    "types": ["node"]               // Node globals; Playwright types come via imports
+  },
+  "include": [
+    "playwright.config.ts",         // include config file
+    "tests"                         // include test folder
+, "fixtures/fixtures.ts"  ]
+}
