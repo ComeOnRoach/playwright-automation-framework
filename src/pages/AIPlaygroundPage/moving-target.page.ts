@@ -1,6 +1,6 @@
-// pages/components/MovingTargetCard.ts
+// pages/moving-target.page.ts
 import { Page, Locator, expect } from '@playwright/test';
-import { ToastComponent } from './ToastComponent';
+import { ToastComponent } from '../../helpers/toast.helper';
 
 export class MovingTargetCard {
   readonly page: Page;

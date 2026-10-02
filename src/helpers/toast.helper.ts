@@ -1,4 +1,4 @@
-// pages/components/ToastComponent.ts
+// helpers/toast.helper.ts
 import { Page, Locator, expect } from '@playwright/test';
 
 export class ToastComponent {

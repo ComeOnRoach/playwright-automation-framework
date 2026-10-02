@@ -8,6 +8,7 @@
   },
   "include": [
     "playwright.config.ts",         // include config file
-    "tests"                         // include test folder
-, "fixtures/fixtures.ts"  ]
+    "tests",                        // include test folder
+    "src"                           // include pages, fixtures, helpers
+  ]
 }

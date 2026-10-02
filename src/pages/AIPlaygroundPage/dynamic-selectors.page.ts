@@ -1,4 +1,4 @@
-// pages/components/DynamicLoginCard.ts
+// pages/dynamic-selectors.page.ts
 import { Page, Locator, expect } from '@playwright/test';
 
 export class DynamicLoginCard {

@@ -1,4 +1,4 @@
-// pages/AIPlaygroundPage.ts
+// pages/ai-playground.page.ts
 import { Page } from '@playwright/test';
 
 export class AIPlaygroundPage {

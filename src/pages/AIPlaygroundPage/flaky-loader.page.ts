@@ -1,6 +1,6 @@
-// pages/components/FlakyLoaderCard.ts
+// pages/flaky-loader.page.ts
 import { Page, Locator, expect } from '@playwright/test';
-import { ToastComponent } from './ToastComponent';
+import { ToastComponent } from '../../helpers/toast.helper';
 
 export class FlakyLoaderCard {
   readonly page: Page;

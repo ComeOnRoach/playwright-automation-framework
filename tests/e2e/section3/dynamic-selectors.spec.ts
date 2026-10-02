@@ -1,12 +1,6 @@
-import { test } from '../../fixtures/fixtures';
+import { test } from '../../../src/fixtures/playground.fixture';
 
 test.describe('Dynamic Selectors', () => {
-  test.beforeEach(async ({ aiPlaygroundPage }) => {
-    await test.step('Navigate to site', async () => {
-      await aiPlaygroundPage.navigate();
-    });
-  });
-
   test('Login succeeds when username and password are provided', async ({ dynamicLoginCard }) => {
     await test.step('Fill in username and password, then click Login', async () => {
       await dynamicLoginCard.login('jane.doe', 'super-secret');
@@ -27,7 +21,7 @@ test.describe('Dynamic Selectors', () => {
     });
   });
 
-  test('Dynamic classes are regenerated on every page load', async ({ page, aiPlaygroundPage, dynamicLoginCard }) => {
+  test('Dynamic classes are regenerated on every page load', async ({ aiPlaygroundPage, dynamicLoginCard }) => {
     await test.step('Capture the classes generated on the first page load', async () => {
       await dynamicLoginCard.loginButton.waitFor({ state: 'visible' });
     });

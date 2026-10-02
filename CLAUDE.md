@@ -1,20 +1,41 @@
+## Core Rules
+- **Use Playwright CLI**. Playwright MCP should be used in rare cases when the task can't be done with Playwright CLI
+
+## Behaviour Rules
+- If the request is ambiguous, ask one clarifying question first
+- Never assume which challenge or file is meant if unspecified
+- Always confirm the target file before making edits
+- Use Plan mode for any task touching more than 2 files
+
 ## Locator Strategy
-1. Prefer data-testid attributes first
-2. Use stable IDs second
-3. Use role-based selectors third (getByRole, getByLabel)
-4. Never use class names as selectors -- they can change
-5. Use XPath only as a last resort - keep expressions short, avoid absolute paths
+See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
 
 ## Wait Strategy
-- Never use page.waitForTimeout() or any fixed delay
-- Use Playwright's built-in waiting -- locators and assertions retry automatically
-- For slow elements: expect(locator).toBeVisible({ timeout: 30000 }) -- 30s covers worst-case delays
-- For state changes: locator.waitFor({ state: 'visible' })
-- Never poll manually -- if you're writing a loop to wait, use the right Playwright API
+See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
 
 ## Assertion Rules
-- Always assert visibility: expect(locator).toBeVisible()
-- Never assert text or existence alone -- the element may be in the DOM but off-screen
-- For success/error states: assert both visibility and meaningful text content
-- Avoid weak assertions like toBeEmpty() or toHaveCount() as proof something worked
-- Never assert that an element exists in the DOM -- assert what the user actually sees
+See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
+
+## Page Object Rules
+See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
+
+## Fixture Building Rules
+See [src/fixtures/CLAUDE.md](src/fixtures/CLAUDE.md)
+
+## Test Structure
+- Always wrap tests in a test.describe block
+- Never repeat `goto()` in each test: navigate once in a fixture or `test.beforeEach`
+- One describe block per challenge or feature
+- Test names must describe behaviour, not actions
+  Good: 'shows error when invalid email submitted'
+  Bad:  'test email field'
+- Import `test` and `expect` from the project fixture (e.g. `src/fixtures/playground.fixture.ts`), never directly from `@playwright/test` in spec files
+
+## Project Structure
+- **UI Test files**: tests/e2e/[section-name]/[challenge-name].spec.ts
+- **API Test files**: tests/api/[section-name]/[challenge-name].spec.ts
+- **Page Objects**: src/pages/[page-name].page.ts (challenge cards: src/pages/[PageFolder]/[challenge-name].page.ts)
+- **Helpers**: src/helpers/[name].helper.ts
+- **Fixtures**: src/fixtures/[name].fixture.ts
+- **Test data**: test-data/[name].json
+- Use relative imports (no `@/` alias is configured)

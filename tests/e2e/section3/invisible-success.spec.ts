@@ -1,12 +1,6 @@
-import { test } from '../../fixtures/fixtures';
+import { test } from '../../../src/fixtures/playground.fixture';
 
 test.describe('Invisible Success', () => {
-  test.beforeEach(async ({ aiPlaygroundPage }) => {
-    await test.step('Navigate to site', async () => {
-      await aiPlaygroundPage.navigate();
-    });
-  });
-
   test('Submitting a valid email shows the success message', async ({ invisibleSuccessCard }) => {
     const email = 'jane.doe@example.com';
 
