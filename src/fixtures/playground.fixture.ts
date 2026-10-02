@@ -7,6 +7,7 @@ import { MovingTargetCard } from '../pages/AIPlaygroundPage/moving-target.page';
 import { InvisibleSuccessCard } from '../pages/AIPlaygroundPage/invisible-success.page';
 import { ToastCard } from '../pages/AIPlaygroundPage/toast.page';
 import { ReenableButtonCard } from '../pages/AIPlaygroundPage/reenable-button.page';
+import { LazyRenderedCard } from '../pages/AIPlaygroundPage/lazy-rendered.page';
 
 type Fixtures = {
   aiPlaygroundPage: AIPlaygroundPage;
@@ -16,6 +17,7 @@ type Fixtures = {
   invisibleSuccessCard: InvisibleSuccessCard;
   toastCard: ToastCard;
   reenableButtonCard: ReenableButtonCard;
+  lazyRenderedCard: LazyRenderedCard;
 };
 
 export const test = base.extend<Fixtures>({
@@ -41,6 +43,9 @@ export const test = base.extend<Fixtures>({
   },
   reenableButtonCard: async ({ page, aiPlaygroundPage }, use) => {
     await use(new ReenableButtonCard(page));
+  },
+  lazyRenderedCard: async ({ page, aiPlaygroundPage }, use) => {
+    await use(new LazyRenderedCard(page));
   },
 });
 
