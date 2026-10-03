@@ -1,8 +1,8 @@
-// pages/invisible-success.page.ts
-import { Page, Locator, expect } from '@playwright/test';
+// src/pages/AIPlaygroundPage/invisible-success.page.ts
+import { Page, Locator } from '@playwright/test';
 
 export class InvisibleSuccessCard {
-  readonly page: Page;
+  private readonly page: Page;
   readonly emailInput: Locator;
   readonly submitButton: Locator;
   readonly emailError: Locator;
@@ -19,18 +19,5 @@ export class InvisibleSuccessCard {
   async submit(email: string) {
     await this.emailInput.fill(email);
     await this.submitButton.click();
-  }
-
-  async assertSubmittedSuccessfully(email: string) {
-    // The user must actually see the confirmation, not just have it in the DOM.
-    await expect(this.result).toBeVisible({timeout: 30000});
-    await expect(this.result).toHaveText(`Form submitted successfully. Confirmation sent to ${email}.`);
-    await expect(this.emailError).toBeHidden();
-  }
-
-  async assertEmailErrorShown() {
-    await expect(this.emailError).toBeVisible();
-    await expect(this.emailError).toHaveText('Valid email required');
-    await expect(this.result).toBeHidden();
   }
 }

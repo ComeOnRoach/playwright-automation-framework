@@ -1,8 +1,8 @@
-// pages/multi-step-form.page.ts
-import { Page, Locator, expect } from '@playwright/test';
+// src/pages/AIPlaygroundPage/multi-step-form.page.ts
+import { Page, Locator } from '@playwright/test';
 
 export class MultiStepFormCard {
-  readonly page: Page;
+  private readonly page: Page;
   readonly fullNameInput: Locator;
   readonly emailInput: Locator;
   readonly nextStepOneButton: Locator;
@@ -64,10 +64,5 @@ export class MultiStepFormCard {
 
   async submit() {
     await this.submitButton.click();
-  }
-
-  async assertSubmitted() {
-    await expect(this.successContainer).toBeVisible();
-    await expect(this.successMessage).toBeVisible();
   }
 }

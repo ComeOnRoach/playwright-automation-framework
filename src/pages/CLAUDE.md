@@ -4,6 +4,7 @@
 - One class per file, named `[Name]Page` / `[Name]Card`, file `[name].page.ts` (kebab-case)
 - Constructor takes `Page`; locators are `readonly` fields
 - Expose user actions as methods; keep assertions in specs, not in page objects
+- Keep Page Objects assertion-free by exposing only Locator properties and action methods. All expect(...) assertions must reside directly in .spec.ts files.
 
 ## Locator Strategy
 1. Prefer data-testid attributes first
@@ -18,10 +19,3 @@
 - For slow elements: expect(locator).toBeVisible({ timeout: 30000 }) -- override the timeout per assertion, not globally
 - For state changes: locator.waitFor({ state: 'visible' })
 - Never poll manually -- if you're writing a loop to wait, use the right Playwright API
-
-## Assertion Rules
-- Assert visibility for anything the user should see: expect(locator).toBeVisible() (use toBeHidden() for absence)
-- Never assert text or existence alone -- the element may be in the DOM but off-screen
-- For success/error states: assert both visibility and meaningful text content
-- Avoid weak assertions like toBeEmpty() or toHaveCount() as proof something worked
-- Assert what the user actually sees, not DOM presence

@@ -1,0 +1,6 @@
+{
+  "headphones": { "id": 1, "name": "Wireless Headphones", "price": 89.99 },
+  "usbHub": { "id": 2, "name": "USB-C Hub 7-in-1", "price": 34.99 },
+  "keyboard": { "id": 3, "name": "Mechanical Keyboard TKL", "price": 129.99 },
+  "laptopStand": { "id": 4, "name": "Laptop Stand Aluminium", "price": 49.99 }
+}

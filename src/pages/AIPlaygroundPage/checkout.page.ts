@@ -1,8 +1,8 @@
-// pages/AIPlaygroundPage/checkout.page.ts
+// src/pages/AIPlaygroundPage/checkout.page.ts
 import { Page, Locator } from '@playwright/test';
 
 export class CheckoutCard {
-  readonly page: Page;
+  private readonly page: Page;
   readonly step1: Locator;
   readonly step2: Locator;
   readonly cartCount: Locator;
@@ -22,14 +22,22 @@ export class CheckoutCard {
     this.emptyCartError = page.locator('#cart-empty-error');
   }
 
-  async addProduct(id: 1 | 2 | 3 | 4, quantity = 1) {
-    if (quantity !== 1) {
-      await this.page.locator(`#qty-${id}`).fill(String(quantity));
-    }
-    await this.page.locator(`#add-to-cart-${id}`).click();
+  quantityInput(id: number): Locator {
+    return this.page.locator(`#qty-${id}`);
   }
 
-  async clickProceed() {
+  addToCartButton(id: number): Locator {
+    return this.page.locator(`#add-to-cart-${id}`);
+  }
+
+  async addProduct(id: number, quantity = 1): Promise<void> {
+    if (quantity !== 1) {
+      await this.quantityInput(id).fill(String(quantity));
+    }
+    await this.addToCartButton(id).click();
+  }
+
+  async clickProceed(): Promise<void> {
     await this.proceedButton.click();
   }
 }

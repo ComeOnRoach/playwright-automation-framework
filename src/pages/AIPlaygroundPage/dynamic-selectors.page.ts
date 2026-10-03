@@ -1,8 +1,8 @@
-// pages/dynamic-selectors.page.ts
-import { Page, Locator, expect } from '@playwright/test';
+// src/pages/AIPlaygroundPage/dynamic-selectors.page.ts
+import { Page, Locator } from '@playwright/test';
 
 export class DynamicLoginCard {
-  readonly page: Page;
+  private readonly page: Page;
   readonly card: Locator;
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
@@ -26,17 +26,5 @@ export class DynamicLoginCard {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
-  }
-
-  async assertLoginSuccessful() {
-    await expect(this.successMessage).toBeVisible();
-    await expect(this.successMessage).toHaveText('Login successful');
-    await expect(this.errorMessage).toBeHidden();
-  }
-
-  async assertLoginFailed() {
-    await expect(this.errorMessage).toBeVisible();
-    await expect(this.errorMessage).toHaveText('Invalid credentials');
-    await expect(this.successMessage).toBeHidden();
   }
 }

@@ -1,4 +1,4 @@
-import { test } from '../../../src/fixtures/playground.fixture';
+import { test, expect } from '../../../src/fixtures';
 
 test.describe('Lazy-Rendered Element', { tag: '@ci' }, () => {
   test('Clicking the reveal button makes the lazy element visible', async ({ lazyRenderedCard }) => {
@@ -7,7 +7,8 @@ test.describe('Lazy-Rendered Element', { tag: '@ci' }, () => {
     });
 
     await test.step('Verify the lazy element is visible', async () => {
-      await lazyRenderedCard.assertLazyElementVisible();
+      // Text contains a randomised selector value, so assert visibility only.
+      await expect(lazyRenderedCard.lazyElement).toBeVisible({ timeout: 30000 });
     });
   });
 });

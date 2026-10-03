@@ -1,4 +1,4 @@
-import { test } from '../../../src/fixtures/playground.fixture';
+import { test, expect } from '../../../src/fixtures';
 
 test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
   test('Login succeeds when username and password are provided', async ({ dynamicLoginCard }) => {
@@ -7,7 +7,9 @@ test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
     });
 
     await test.step('Verify "Login successful" message is displayed', async () => {
-      await dynamicLoginCard.assertLoginSuccessful();
+      await expect(dynamicLoginCard.successMessage).toBeVisible();
+      await expect(dynamicLoginCard.successMessage).toHaveText('Login successful');
+      await expect(dynamicLoginCard.errorMessage).toBeHidden();
     });
   });
 
@@ -17,7 +19,9 @@ test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
     });
 
     await test.step('Verify "Invalid credentials" message is displayed', async () => {
-      await dynamicLoginCard.assertLoginFailed();
+      await expect(dynamicLoginCard.errorMessage).toBeVisible();
+      await expect(dynamicLoginCard.errorMessage).toHaveText('Invalid credentials');
+      await expect(dynamicLoginCard.successMessage).toBeHidden();
     });
   });
 
@@ -35,7 +39,9 @@ test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
 
     await test.step('Verify the test still finds the Login button although its classes changed', async () => {
       await dynamicLoginCard.login('jane.doe', 'super-secret');
-      await dynamicLoginCard.assertLoginSuccessful();
+      await expect(dynamicLoginCard.successMessage).toBeVisible();
+      await expect(dynamicLoginCard.successMessage).toHaveText('Login successful');
+      await expect(dynamicLoginCard.errorMessage).toBeHidden();
     });
 
     test.info().annotations.push({

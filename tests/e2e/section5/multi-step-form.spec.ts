@@ -1,4 +1,4 @@
-import { test } from '../../../src/fixtures/playground.fixture';
+import { test, expect } from '../../../src/fixtures';
 
 test.describe('Multi-Step Form', () => {
   test(
@@ -33,7 +33,8 @@ test.describe('Multi-Step Form', () => {
       });
 
       await test.step('Verify the success message is displayed', async () => {
-        await multiStepFormCard.assertSubmitted();
+        await expect(multiStepFormCard.successContainer).toBeVisible();
+      await expect(multiStepFormCard.successMessage).toBeVisible();
       });
     },
   );

@@ -1,5 +1,14 @@
 ## Core Rules
 - **Use Playwright CLI**. Playwright MCP should be used in rare cases when the task can't be done with Playwright CLI
+- NO hard coded values should be in .spec.ts, POMs files, fixtures
+
+### Code Reusability & DRY
+- Prioritize code reusability: design modular, composable components and functions.
+- If logic, setup, or page interactions can be reused, extract them immediately rather than duplicating code.
+- Reuse mechanisms by layer:
+  - **Test setups & context:** Use custom Playwright fixtures (`base.extend`), not copy-pasted `beforeEach` hooks.
+  - **UI interactions:** Encapsulate locators and shared user actions in Page Objects or Component Objects.
+  - **Data & API helpers:** Extract common API calls, data generation, and payload schemas into standalone helper modules.
 
 ## Behaviour Rules
 - If the request is ambiguous, ask one clarifying question first
@@ -14,7 +23,7 @@ See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
 See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
 
 ## Assertion Rules
-See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
+See [tests/CLAUDE.md](tests/CLAUDE.md)
 
 ## Page Object Rules
 See [src/pages/CLAUDE.md](src/pages/CLAUDE.md)
@@ -29,7 +38,7 @@ See [src/fixtures/CLAUDE.md](src/fixtures/CLAUDE.md)
 - Test names must describe behaviour, not actions
   Good: 'shows error when invalid email submitted'
   Bad:  'test email field'
-- Import `test` and `expect` from the project fixture (e.g. `src/fixtures/playground.fixture.ts`), never directly from `@playwright/test` in spec files
+- Import `test` and `expect` from the project fixture (i.e. `src/fixtures/index.ts`), never directly from `@playwright/test` in spec files
 
 ## Project Structure
 - **UI Test files**: tests/e2e/[section-name]/[challenge-name].spec.ts

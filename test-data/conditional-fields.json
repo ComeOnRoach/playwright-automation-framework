@@ -1,0 +1,12 @@
+{
+  "validEmail": "jane@example.com",
+  "invalidEmail": "not-an-email",
+  "validCode": "123456",
+  "invalidCode": "12345",
+  "messages": {
+    "verificationRequired": "Verification required. Please enter the code.",
+    "success": "Submitted successfully.",
+    "emailError": "Valid email required",
+    "codeError": "Valid 6-digit code required"
+  }
+}

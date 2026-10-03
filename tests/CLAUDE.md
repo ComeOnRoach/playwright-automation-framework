@@ -1,3 +1,11 @@
+<test_assertion_rules>
+## Assertion Rules
+- Assert visibility for anything the user should see: expect(locator).toBeVisible() (use toBeHidden() for absence)
+- Never assert text or existence alone -- the element may be in the DOM but off-screen
+- For success/error states: assert both visibility and meaningful text content
+- Avoid weak assertions like toBeEmpty() or toHaveCount() as proof something worked
+- Assert what the user actually sees, not DOM presence
+
 <test_tagging_rules>
 ### 1. Tag Taxonomy (Allowed Values Only)
 Every Playwright test MUST include standardized tags. Do not invent custom tags without prior approval.
@@ -18,7 +26,6 @@ Every Playwright test MUST include standardized tags. Do not invent custom tags 
 - **Operational / Health Tags (Optional / Conditional):**
   - `@flaky`: Unstable tests quarantined from blocking CI.
   - `@slow`: Long-running tests requiring custom timeouts.
-  - `@wip`: Work-in-progress tests (excluded from default runs).
 
 ### 2. Syntax & Placement Standards
 - ALWAYS use the modern Playwright `tag` property in test declarations:
@@ -27,6 +34,3 @@ Every Playwright test MUST include standardized tags. Do not invent custom tags 
   test('User successfully signs in', { 
     tag: ['@smoke', '@ui', '@feature:auth'] 
   }, async ({ page }) => { ... });
-
-  // AVOID (deprecated inline title tags)
-  test('User successfully signs in @smoke @ui', async ({ page }) => { ... });
