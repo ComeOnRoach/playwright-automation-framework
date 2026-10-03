@@ -9,6 +9,7 @@ import { ToastCard } from '../pages/AIPlaygroundPage/toast.page';
 import { ReenableButtonCard } from '../pages/AIPlaygroundPage/reenable-button.page';
 import { LazyRenderedCard } from '../pages/AIPlaygroundPage/lazy-rendered.page';
 import { MultiStepFormCard } from '../pages/AIPlaygroundPage/multi-step-form.page';
+import { CheckoutCard } from '../pages/AIPlaygroundPage/checkout.page';
 
 type Fixtures = {
   aiPlaygroundPage: AIPlaygroundPage;
@@ -20,6 +21,7 @@ type Fixtures = {
   reenableButtonCard: ReenableButtonCard;
   lazyRenderedCard: LazyRenderedCard;
   multiStepFormCard: MultiStepFormCard;
+  checkoutCard: CheckoutCard;
 };
 
 export const test = base.extend<Fixtures>({
@@ -51,6 +53,9 @@ export const test = base.extend<Fixtures>({
   },
   multiStepFormCard: async ({ page, aiPlaygroundPage }, use) => {
     await use(new MultiStepFormCard(page));
+  },
+  checkoutCard: async ({ page, aiPlaygroundPage }, use) => {
+    await use(new CheckoutCard(page));
   },
 });
 
