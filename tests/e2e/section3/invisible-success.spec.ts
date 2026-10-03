@@ -1,6 +1,6 @@
 import { test } from '../../../src/fixtures/playground.fixture';
 
-test.describe('Invisible Success', () => {
+test.describe('Invisible Success', { tag: '@smoke' }, () => {
   test('Submitting a valid email shows the success message', async ({ invisibleSuccessCard }) => {
     const email = 'jane.doe@example.com';
 

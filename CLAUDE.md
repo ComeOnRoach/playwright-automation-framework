@@ -39,3 +39,6 @@ See [src/fixtures/CLAUDE.md](src/fixtures/CLAUDE.md)
 - **Fixtures**: src/fixtures/[name].fixture.ts
 - **Test data**: test-data/[name].json
 - Use relative imports (no `@/` alias is configured)
+
+## Tag Taxonomy
+See [tests/CLAUDE.md](tests/CLAUDE.md)

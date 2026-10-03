@@ -1,6 +1,6 @@
 import { test } from '../../../src/fixtures/playground.fixture';
 
-test.describe('Dynamic Selectors', {tag: [ '@smoke', '@ci']}, () => {
+test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
   test('Login succeeds when username and password are provided', async ({ dynamicLoginCard }) => {
     await test.step('Fill in username and password, then click Login', async () => {
       await dynamicLoginCard.login('jane.doe', 'super-secret');
