@@ -22,7 +22,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["html"], ["list"]],
+  reporter: process.env.CI
+    ? [["github"], ["list"], ["html", { open: "never" }]]
+    : [["html", { open: "never" }], ["list"]],
+  timeout: 30_000,
+  expect: { timeout: 10_000 },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -39,10 +43,11 @@ export default defineConfig({
       name: "playwrite-AI-automation-framework",
       use: {
         ...devices["Desktop Chrome"],
-        viewport: null,
-        deviceScaleFactor: undefined,
+        // --start-maximized has no effect in headless CI, so use a fixed viewport there
+        viewport: process.env.CI ? { width: 1920, height: 1080 } : null,
+        deviceScaleFactor: process.env.CI ? 1 : undefined,
         launchOptions: {
-          args: ["--start-maximized"],
+          args: process.env.CI ? [] : ["--start-maximized"],
         },
       },
     },
