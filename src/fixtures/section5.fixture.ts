@@ -5,10 +5,13 @@ import { MultiStepFormCard } from '../pages/AIPlaygroundPage/multi-step-form.pag
 import { CheckoutCard } from '../pages/AIPlaygroundPage/checkout.page';
 import { ConditionalFieldsCard } from '../pages/AIPlaygroundPage/conditional-fields.page';
 
+import { EmployeeDirectoryCard } from '../pages/AIPlaygroundPage/employee-directory.page';
+
 type Fixtures = {
   multiStepFormCard: MultiStepFormCard;
   checkoutCard: CheckoutCard;
   conditionalFieldsCard: ConditionalFieldsCard;
+  employeeDirectoryCard: EmployeeDirectoryCard;
 };
 
 export const test = base.extend<Fixtures>({
@@ -20,5 +23,8 @@ export const test = base.extend<Fixtures>({
   },
   conditionalFieldsCard: async ({ page, aiPlaygroundPage: _navigated }, use) => {
     await use(new ConditionalFieldsCard(page));
+  },
+  employeeDirectoryCard: async ({ page, aiPlaygroundPage: _navigated }, use) => {
+    await use(new EmployeeDirectoryCard(page));
   },
 });

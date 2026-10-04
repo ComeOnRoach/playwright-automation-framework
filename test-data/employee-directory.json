@@ -1,0 +1,53 @@
+{
+  "totalEmployees": 15,
+  "filters": {
+    "name": {
+      "term": "sarah",
+      "column": "name",
+      "expectedValues": ["Sarah Mitchell"],
+      "smoke": true
+    },
+    "department": {
+      "term": "ENGINEERING",
+      "column": "dept",
+      "expectedValues": ["Engineering", "Engineering", "Engineering", "Engineering", "Engineering"]
+    },
+    "salary": {
+      "term": "51",
+      "column": "salary",
+      "expectedValues": ["51000"]
+    },
+    "statusActive": {
+      "term": "active",
+      "column": "status",
+      "expectedValues": [
+        "active", "active", "active", "active", "active", "active",
+        "active", "active", "active", "active", "active", "active"
+      ]
+    },
+    "statusInactive": {
+      "term": "inactive",
+      "column": "status",
+      "expectedValues": ["inactive", "inactive", "inactive"]
+    },
+    "startDate": {
+      "term": "2020",
+      "column": "start",
+      "expectedValues": ["2020-02-14", "2020-09-05", "2020-12-01"]
+    }
+  },
+  "noMatchTerm": "zzz",
+  "filteredSort": {
+    "term": "sales",
+    "column": "salary",
+    "expectedSalariesAscending": ["34000", "36000", "37000"]
+  },
+  "sortColumns": [
+    { "column": "name", "label": "Name", "kind": "text" },
+    { "column": "dept", "label": "Department", "kind": "text" },
+    { "column": "salary", "label": "Salary", "kind": "number" },
+    { "column": "status", "label": "Status", "kind": "text" },
+    { "column": "start", "label": "Start Date", "kind": "text" }
+  ],
+  "arrows": { "asc": "↑", "desc": "↓" }
+}
