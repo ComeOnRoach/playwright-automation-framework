@@ -1,0 +1,16 @@
+{
+  "storageKey": "wdu-session",
+  "validUser": {
+    "username": "testuser",
+    "password": "pass123"
+  },
+  "invalidUser": {
+    "username": "wronguser",
+    "password": "wrongpass"
+  },
+  "sessionToken": "abc123",
+  "messages": {
+    "welcome": "Welcome, testuser",
+    "invalidCredentials": "Invalid credentials"
+  }
+}

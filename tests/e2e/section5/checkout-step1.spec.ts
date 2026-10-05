@@ -10,7 +10,7 @@ test.describe(
   () => {
     test(
       'starts with an empty cart on page load',
-      { tag: ['@ci', '@regression'] },
+      { tag: ['@regression'] },
       async ({ checkoutCard }) => {
         await expect(checkoutCard.cartCount).toBeVisible();
         await expect(checkoutCard.cartCount).toHaveText('0');
@@ -23,7 +23,7 @@ test.describe(
 
     test(
       'increments the cart count when a product is added',
-      { tag: ['@ci', '@smoke'] },
+      { tag: ['@smoke'] },
       async ({ checkoutCard }) => {
         await checkoutCard.addProduct(headphones.id);
         await expect(checkoutCard.cartCount).toHaveText('1');
@@ -38,7 +38,7 @@ test.describe(
 
     test(
       'updates the cart total when items are added',
-      { tag: ['@ci', '@regression'] },
+      { tag: ['@regression'] },
       async ({ checkoutCard }) => {
         await checkoutCard.addProduct(headphones.id);
         await expect(checkoutCard.cartTotal).toHaveText(formatGBP(headphones.price));
@@ -57,7 +57,7 @@ test.describe(
 
     test(
       'blocks proceeding to step 2 and shows an error when the cart is empty',
-      { tag: ['@ci', '@regression'] },
+      { tag: ['@regression'] },
       async ({ checkoutCard }) => {
         await checkoutCard.clickProceed();
 
@@ -71,7 +71,7 @@ test.describe(
 
     test(
       'moves to step 2 when the cart has items',
-      { tag: ['@ci', '@smoke'] },
+      { tag: ['@smoke'] },
       async ({ checkoutCard }) => {
         await checkoutCard.addProduct(keyboard.id);
         await expect(checkoutCard.cartCount).toHaveText('1');

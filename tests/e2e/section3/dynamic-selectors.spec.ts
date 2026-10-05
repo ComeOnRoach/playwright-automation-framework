@@ -29,12 +29,14 @@ test.describe('Dynamic Selectors', { tag: '@smoke' }, () => {
     await test.step('Capture the classes generated on the first page load', async () => {
       await dynamicLoginCard.loginButton.waitFor({ state: 'visible' });
     });
+
     const firstLoadClass = await dynamicLoginCard.loginButton.getAttribute('class');
 
     await test.step('Reload the page', async () => {
       await aiPlaygroundPage.navigate();
       await dynamicLoginCard.loginButton.waitFor({ state: 'visible' });
     });
+
     const secondLoadClass = await dynamicLoginCard.loginButton.getAttribute('class');
 
     await test.step('Verify the test still finds the Login button although its classes changed', async () => {

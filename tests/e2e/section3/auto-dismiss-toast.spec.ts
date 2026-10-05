@@ -3,7 +3,7 @@ import { test, expect } from "../../../src/fixtures";
 test.describe("Toast", () => {
   test(
     '"Trigger Toast" button shows the "Action completed" toast and then dismisses it',
-    { tag: ["@smoke", "@ci"] },
+    { tag: ["@smoke"] },
     async ({ toastCard }) => {
       await test.step("Click the Trigger Toast button", async () => {
         await toastCard.triggerToast();

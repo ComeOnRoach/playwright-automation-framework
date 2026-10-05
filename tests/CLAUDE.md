@@ -1,36 +1,36 @@
-<test_assertion_rules>
+# Test Rules
+
 ## Assertion Rules
-- Assert visibility for anything the user should see: expect(locator).toBeVisible() (use toBeHidden() for absence)
-- Never assert text or existence alone -- the element may be in the DOM but off-screen
-- For success/error states: assert both visibility and meaningful text content
-- Avoid weak assertions like toBeEmpty() or toHaveCount() as proof something worked
-- Assert what the user actually sees, not DOM presence
+- Assert what the user sees: `expect(locator).toBeVisible()` (`toBeHidden()` for absence), not DOM presence.
+- For success/error states assert both visibility and meaningful text.
+- Text, count and emptiness assertions (`toHaveText`, `toHaveCount`, `toBeEmpty`) are fine when that value is the behaviour under test; never use them alone as proof an action worked.
 
-<test_tagging_rules>
-### 1. Tag Taxonomy (Allowed Values Only)
-Every Playwright test MUST include standardized tags. Do not invent custom tags without prior approval.
+## Test Design
+- One behaviour per test; split rather than chaining unrelated checks.
+- Use `test.step('...', async () => { ... })` to label stages of a long flow.
+- Soft assertions (`expect.soft`) only for independent facts checked in one view; never for a precondition the rest of the test depends on.
+- No `page.waitForTimeout`; rely on web-first assertions.
 
-- **Suite / Frequency Tags (Required — choose at least one):**
-  - `@smoke`: Critical happy paths, blocking P0 flows (runs on every PR, fast execution).
-  - `@sanity`: Verifies core functionality of specific modules after builds.
-  - `@regression`: Full regression test set (runs nightly or pre-release).
+## Tag Taxonomy
+Every test MUST carry tags from this list. Do not invent tags without approval. `@ci` is not allowed.
 
-- **Layer / Scope Tags (Required — choose one):**
-  - `@api`: Direct HTTP/API verification tests.
-  - `@ui`: Full end-to-end browser tests using UI interactions.
-  - `@visual`: Visual regression or screenshot comparison tests.
+- **Suite (at least one):**
+  - `@smoke`: critical P0 happy paths. This is what CI runs on every PR, so keep it fast.
+  - `@sanity`: core functionality of a module after a build.
+  - `@regression`: full set, run nightly or pre-release. Use it for every UI test that is not P0/P1; only P0/P1 get `@smoke`.
+- **Layer (one):** `@ui` (browser E2E), `@api` (direct HTTP), `@visual` (screenshot comparison).
+- **Feature (one):** `@feature:<module-name>` (e.g. `@feature:checkout`, `@feature:local-storage-session`).
+- **Optional:** `@flaky` (quarantined from blocking CI), `@slow` (needs a custom timeout).
 
-- **Feature / Domain Tags (Required):**
-  - Format: `@feature:<module_name>` (e.g., `@feature:auth`, `@feature:checkout`, `@feature:billing`).
+## Tag Syntax
+Use the `tag` option in the test declaration. Tags set on `test.describe` are inherited by its tests.
 
-- **Operational / Health Tags (Optional / Conditional):**
-  - `@flaky`: Unstable tests quarantined from blocking CI.
-  - `@slow`: Long-running tests requiring custom timeouts.
+```typescript
+// CORRECT
+test('signs in with valid credentials', {
+  tag: ['@smoke', '@ui', '@feature:auth'],
+}, async ({ page }) => { ... });
 
-### 2. Syntax & Placement Standards
-- ALWAYS use the modern Playwright `tag` property in test declarations:
-  ```typescript
-  // CORRECT
-  test('User successfully signs in', { 
-    tag: ['@smoke', '@ui', '@feature:auth'] 
-  }, async ({ page }) => { ... });
+// INCORRECT: tag in the title, no layer or feature tag
+test('signs in with valid credentials @smoke', async ({ page }) => { ... });
+```

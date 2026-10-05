@@ -1,6 +1,6 @@
 import { test, expect } from "../../../src/fixtures";
 
-test.describe("Re-enable Button", { tag: "@ci" }, () => {
+test.describe("Re-enable Button", { tag: "@smoke" }, () => {
   test('button is disabled after click and becomes enabled again with a "Ready" status', async ({
     reenableButtonCard,
   }) => {

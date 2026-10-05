@@ -9,7 +9,7 @@ import rawData from '../../../test-data/employee-directory.json';
 const data = rawData as EmployeeDirectoryData;
 const { filters, sortColumns, arrows, totalEmployees } = data;
 
-const baseTags = ['@ci', '@regression', '@ui', '@feature:employee-directory'];
+const baseTags = ['@regression', '@ui', '@feature:employee-directory'];
 
 // Salary cells render with a locale-dependent thousands separator, so match them by amount.
 function expectedTexts(column: EmployeeColumn, values: string[]): (string | RegExp)[] {

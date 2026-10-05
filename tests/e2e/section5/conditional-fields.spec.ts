@@ -4,7 +4,7 @@ import data from '../../../test-data/conditional-fields.json';
 test.describe('Conditional Validation', () => {
   test(
     'Reveals the verification code field and prompt after submitting a valid email',
-    { tag: ['@ci', '@smoke', '@ui', '@feature:conditional-fields'] },
+    { tag: ['@smoke', '@ui', '@feature:conditional-fields'] },
     async ({ conditionalFieldsCard }) => {
       await test.step('Enter a valid email and submit', async () => {
         await conditionalFieldsCard.enterEmail(data.validEmail);
@@ -21,7 +21,7 @@ test.describe('Conditional Validation', () => {
 
   test(
     'Completes the form and shows the success message after submitting a valid 6-digit code',
-    { tag: ['@ci', '@smoke', '@ui', '@feature:conditional-fields'] },
+    { tag: ['@smoke', '@ui', '@feature:conditional-fields'] },
     async ({ conditionalFieldsCard }) => {
       await test.step('Enter a valid email and submit to reveal the code field', async () => {
         await conditionalFieldsCard.enterEmail(data.validEmail);
@@ -44,7 +44,7 @@ test.describe('Conditional Validation', () => {
 
   test(
     'Shows an email validation error when the email is invalid',
-    { tag: ['@ci', '@regression', '@ui', '@feature:conditional-fields'] },
+    { tag: ['@regression', '@ui', '@feature:conditional-fields'] },
     async ({ conditionalFieldsCard }) => {
       await test.step('Enter an invalid email and submit', async () => {
         await conditionalFieldsCard.enterEmail(data.invalidEmail);
@@ -61,7 +61,7 @@ test.describe('Conditional Validation', () => {
 
   test(
     'Shows a code validation error when the code is not 6 digits',
-    { tag: ['@ci', '@regression', '@ui', '@feature:conditional-fields'] },
+    { tag: ['@regression', '@ui', '@feature:conditional-fields'] },
     async ({ conditionalFieldsCard }) => {
       await test.step('Enter a valid email and submit to reveal the code field', async () => {
         await conditionalFieldsCard.enterEmail(data.validEmail);

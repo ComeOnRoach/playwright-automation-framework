@@ -3,7 +3,7 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('Multi-Step Form', () => {
   test(
     'Completes all three steps and shows the success message',
-    { tag: ['@ci', '@smoke', '@ui', '@feature:multi-step-form'] },
+    { tag: ['@smoke', '@ui', '@feature:multi-step-form'] },
     async ({ multiStepFormCard }) => {
       await test.step('Enter full name "Jane Smith" and email "jane@example.com"', async () => {
         await multiStepFormCard.enterFullName('Jane Smith');
