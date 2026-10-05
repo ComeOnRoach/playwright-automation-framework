@@ -15,5 +15,5 @@ Project convention puts `data-testid` first (Playwright's own default is role-fi
 
 ## Wait Strategy
 - Never use `page.waitForTimeout()` or any fixed delay or manual polling loop.
-- Rely on auto-waiting locators and web-first assertions; for slow elements override the timeout per assertion (`expect(locator).toBeVisible({ timeout: 30000 })`), not globally.
+- Rely on auto-waiting locators and web-first assertions; for slow elements override the timeout per assertion (`expect(locator).toBeVisible({ timeout: 20000 })`), not globally.
 - For explicit state waits use `locator.waitFor({ state: 'visible' })`.

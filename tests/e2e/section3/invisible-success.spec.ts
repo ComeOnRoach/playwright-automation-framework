@@ -1,6 +1,6 @@
 import { test, expect } from '../../../src/fixtures';
 
-test.describe('Invisible Success', { tag: '@smoke' }, () => {
+test.describe('Invisible Success', { tag: '@regression' }, () => {
   test('Submitting a valid email shows the success message', async ({ invisibleSuccessCard }) => {
     const email = 'jane.doe@example.com';
 
@@ -10,7 +10,7 @@ test.describe('Invisible Success', { tag: '@smoke' }, () => {
 
     await test.step('Verify the success message is visible with the submitted email', async () => {
       // The user must actually see the confirmation, not just have it in the DOM.
-      await expect(invisibleSuccessCard.result).toBeVisible({ timeout: 30000 });
+      await expect(invisibleSuccessCard.result).toBeVisible({ timeout: 20000 });
       await expect(invisibleSuccessCard.result).toHaveText(
         `Form submitted successfully. Confirmation sent to ${email}.`,
       );

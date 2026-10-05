@@ -1,0 +1,8 @@
+{
+  "columns": {
+    "backlog": "Backlog",
+    "inProgress": "In Progress"
+  },
+  "tasks": ["Fix login bug", "Write unit tests", "Update docs"],
+  "messageTemplate": "\"{task}\" moved to {column}"
+}
