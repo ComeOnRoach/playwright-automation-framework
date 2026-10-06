@@ -1,0 +1,11 @@
+{
+  "url": "https://webdriveruniversity.com/Restaurant-Booking/",
+  "mockEndpoint": "**/api/mock/reservations",
+  "happyPath": {
+    "partySize": "2",
+    "bookingType": "Standard Table",
+    "deposit": "Free",
+    "successHeading": "Reservation confirmed!",
+    "referencePattern": "^WDU-\\d{6}$"
+  }
+}

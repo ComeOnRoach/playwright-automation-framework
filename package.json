@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ComeOnRoach/playwright-automation-framework#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.4.0",
     "eslint": "^10.12.0",
