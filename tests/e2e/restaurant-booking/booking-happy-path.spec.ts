@@ -1,5 +1,6 @@
-import { faker } from '@faker-js/faker';
 import { test, expect } from '../../../src/fixtures';
+import { validGuest, reservationCreatedResponse } from '../../../src/fixtures/booking.fixture';
+import { mockReservationEndpoint } from '../../../src/helpers/booking.helper';
 import bookingData from '../../../test-data/booking.json';
 
 const { happyPath, mockEndpoint } = bookingData;
@@ -8,13 +9,9 @@ test.describe('Restaurant booking', () => {
   test('confirms a reservation and shows a WDU reference', {
     tag: ['@smoke', '@ui', '@feature:restaurant-booking'],
   }, async ({ page, bookingPage }) => {
-    const details = {
-      name: `${faker.person.firstName()} ${faker.person.lastName()}`,
-      email: faker.internet.email(),
-      phone: `07${faker.string.numeric(9)}`,
-    };
+    const details = validGuest;
 
-    await page.route(mockEndpoint, (route) => route.fulfill({ status: 201, json: {} }));
+    await mockReservationEndpoint(page, mockEndpoint, reservationCreatedResponse);
 
     await test.step('choose party size and table type', async () => {
       await bookingPage.selectPartyAndType(happyPath.partySize);
