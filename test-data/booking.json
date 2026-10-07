@@ -6,6 +6,249 @@
     "bookingType": "Standard Table",
     "deposit": "Free",
     "successHeading": "Reservation confirmed!",
-    "referencePattern": "^WDU-\\d{6}$"
+    "referencePattern": "^WDU-\\d{6}$",
+    "guestsSuffix": "guests"
+  },
+  "negative": {
+    "errors": {
+      "step1": "Please select party size and booking type.",
+      "date": "Enter a valid date (YYYY-MM-DD).",
+      "datetime": "Choose a date and an available time.",
+      "name": "Full name required (first and last).",
+      "email": "Valid email required.",
+      "phone": "Valid UK phone number required.",
+      "confirm": "Something went wrong. Please try again."
+    },
+    "missingSelection": [
+      {
+        "title": "nothing selected",
+        "partySize": null,
+        "type": null
+      },
+      {
+        "title": "only party size",
+        "partySize": "2",
+        "type": null
+      },
+      {
+        "title": "only table type",
+        "partySize": null,
+        "type": "standard"
+      }
+    ],
+    "invalidCombos": [
+      {
+        "partySize": "7",
+        "type": "standard",
+        "error": "Standard tables seat up to 6. Choose Group Booking for larger parties."
+      },
+      {
+        "partySize": "10",
+        "type": "standard",
+        "error": "Standard tables seat up to 6. Choose Group Booking for larger parties."
+      },
+      {
+        "partySize": "6",
+        "type": "group",
+        "error": "Group Booking is for parties of 7 or more. Choose Standard Table for up to 6 guests."
+      },
+      {
+        "partySize": "1",
+        "type": "group",
+        "error": "Group Booking is for parties of 7 or more. Choose Standard Table for up to 6 guests."
+      },
+      {
+        "partySize": "1",
+        "type": "private",
+        "error": "Private Dining requires at least 2 guests."
+      }
+    ],
+    "invalidNames": [
+      "",
+      "Madonna",
+      "   "
+    ],
+    "invalidEmails": [
+      "",
+      "no-at-sign.com",
+      "user@nodot",
+      "user @example.com",
+      "a@b"
+    ],
+    "invalidPhones": [
+      "",
+      "abcdefghijk",
+      "0712345678",
+      "071234567890",
+      "+12125551234",
+      "+44712345678",
+      "00447123456789"
+    ],
+    "failureStatuses": [
+      500,
+      503
+    ],
+    "nonServerErrorStatuses": [
+      400,
+      404,
+      422
+    ],
+    "confirmTimeoutMs": 3000
+  },
+  "step1": {
+    "partyOptionCount": 10,
+    "placeholder": "Select party size",
+    "emptyDeposit": "—",
+    "deposits": [
+      {
+        "type": "standard",
+        "partySize": "2",
+        "deposit": "Free"
+      },
+      {
+        "type": "group",
+        "partySize": "8",
+        "deposit": "£20"
+      },
+      {
+        "type": "private",
+        "partySize": "4",
+        "deposit": "£50"
+      }
+    ],
+    "validBoundaries": [
+      {
+        "type": "standard",
+        "partySize": "6"
+      },
+      {
+        "type": "group",
+        "partySize": "7"
+      },
+      {
+        "type": "group",
+        "partySize": "10"
+      },
+      {
+        "type": "private",
+        "partySize": "2"
+      },
+      {
+        "type": "private",
+        "partySize": "10"
+      }
+    ]
+  },
+  "step2": {
+    "selectedLabelPrefix": "Selected: ",
+    "slotLabels": [
+      "5:00 PM",
+      "6:00 PM",
+      "7:00 PM",
+      "8:00 PM",
+      "9:00 PM"
+    ],
+    "alwaysBookedSlot": "7:00 PM",
+    "slotLabelByBookedIndex": [
+      "5:00 PM",
+      "6:00 PM",
+      "8:00 PM",
+      "9:00 PM"
+    ],
+    "fixedClock": {
+      "decemberRollover": {
+        "time": "2026-12-15T10:00:00",
+        "month": "December 2026",
+        "nextMonth": "January 2027"
+      },
+      "leapYear": {
+        "time": "2028-02-10T10:00:00",
+        "month": "February 2028",
+        "days": 29
+      },
+      "shortMonth": {
+        "time": "2027-02-10T10:00:00",
+        "month": "February 2027",
+        "days": 28
+      },
+      "today": {
+        "time": "2027-03-05T10:00:00",
+        "today": "2027-03-05",
+        "yesterday": "2027-03-04"
+      },
+      "march": {
+        "time": "2027-03-01T10:00:00"
+      }
+    },
+    "logicDates": [
+      "2027-03-01",
+      "2027-03-02",
+      "2027-03-03",
+      "2027-03-04",
+      "2027-03-28",
+      "2027-03-29",
+      "2027-03-30",
+      "2027-03-31"
+    ],
+    "logicMonths": [
+      {
+        "year": 2028,
+        "month": 1,
+        "days": 29
+      },
+      {
+        "year": 2027,
+        "month": 1,
+        "days": 28
+      },
+      {
+        "year": 2027,
+        "month": 3,
+        "days": 30
+      },
+      {
+        "year": 2027,
+        "month": 0,
+        "days": 31
+      }
+    ]
+  },
+  "step3": {
+    "validPhones": [
+      {
+        "title": "+44 prefix with 10 digits",
+        "input": "+447123456789",
+        "expected": "+447123456789"
+      },
+      {
+        "title": "spaces inside the number",
+        "input": "07123 456 789",
+        "expected": "07123456789"
+      }
+    ],
+    "validNames": [
+      {
+        "title": "three words",
+        "input": "Mary Jane Watson",
+        "expected": "Mary Jane Watson"
+      },
+      {
+        "title": "leading and trailing spaces",
+        "input": "  Jane Doe  ",
+        "expected": "Jane Doe"
+      }
+    ],
+    "permissiveEmail": "a@b.c",
+    "validEmailNote": "The app regex is permissive: a@b.c is accepted."
+  },
+  "step4": {
+    "normalisation": {
+      "name": "  Jane Doe  ",
+      "expectedName": "Jane Doe",
+      "phone": "07123 456 789",
+      "expectedPhone": "07123456789"
+    },
+    "retryFailureStatus": 500,
+    "pendingDelayMs": 1500
   }
 }

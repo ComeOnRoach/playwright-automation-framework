@@ -32,7 +32,7 @@ test.describe('Restaurant booking', () => {
     });
 
     await test.step('review matches what was entered', async () => {
-      await expect(bookingPage.reviewParty).toHaveText(`${happyPath.partySize} guests`);
+      await expect(bookingPage.reviewParty).toHaveText(`${happyPath.partySize} ${happyPath.guestsSuffix}`);
       await expect(bookingPage.reviewType).toHaveText(happyPath.bookingType);
       await expect(bookingPage.reviewDeposit).toHaveText(happyPath.deposit);
       await expect(bookingPage.reviewDateTime).toHaveText(`${slot.date} at ${slot.time}`);
@@ -56,7 +56,7 @@ test.describe('Restaurant booking', () => {
       });
 
       await expect(bookingPage.successHeading).toHaveText(happyPath.successHeading);
-      await expect(bookingPage.successParty).toHaveText(`${happyPath.partySize} guests`);
+      await expect(bookingPage.successParty).toHaveText(`${happyPath.partySize} ${happyPath.guestsSuffix}`);
       await expect(bookingPage.successType).toHaveText(happyPath.bookingType);
       await expect(bookingPage.successDateTime).toHaveText(`${slot.date} at ${slot.time}`);
       await expect(bookingPage.successName).toHaveText(details.name);
